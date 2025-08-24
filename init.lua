@@ -25,7 +25,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Load keymaps
+-- Load native vim keymaps and overrides.
+-- (plugin specific keymaps are in each plugin's keys array)
 require("keymaps")
 -- Load plugins
 require("lazy").setup("plugins")
