@@ -7,7 +7,7 @@ vim.keymap.set("n", "<leader><leader>n", ":bnext<CR>", { noremap = true, silent 
 -- Go to previous buffer (optional)
 vim.keymap.set("n", "<leader><leader>p", ":bprevious<CR>", { noremap = true, silent = true })
 -- Show diagnostics for current line
-keymap("n", "<leader>d", function()
+vim.keymap.set("n", "<leader>d", function()
   vim.diagnostic.open_float()
 end, { desc = "Show line diagnostics" })
 
