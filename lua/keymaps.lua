@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       bufmap("n", "gd", vim.lsp.buf.definition)
       bufmap("n", "gt", vim.lsp.buf.type_definition)
       bufmap("n", "gD", vim.lsp.buf.declaration)
-      bufmap("n", "<C-k>", vim.lsp.bug.signature_help)
+      bufmap("n", "<C-k>", vim.lsp.buf.signature_help)
       bufmap("n", "grn", vim.lsp.buf.rename)
       bufmap("n", "gra", vim.lsp.buf.code_action)
       bufmap("n", "[d", vim.diagnostic.goto_prev)
