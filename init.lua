@@ -11,21 +11,6 @@ vim.diagnostic.config({
   severity_sort = true,
 })
 
---   -- Buffer-local LSP keymaps
--- vim.api.nvim_create_autocmd("LspAttach", {
---     callback = function(ev)
---       local bufmap = function(mode, lhs, rhs)
---         vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf, silent = true })
---       end
---       bufmap("n", "K", vim.lsp.buf.hover)
---       bufmap("n", "gd", vim.lsp.buf.definition)
---       bufmap("n", "grn", vim.lsp.buf.rename)
---       bufmap("n", "gra", vim.lsp.buf.code_action)
---       bufmap("n", "[d", vim.diagnostic.goto_prev)
---       bufmap("n", "]d", vim.diagnostic.goto_next)
---     end,
---   })
-
 -- Bootstrap lazy.nvim (package manager)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -40,6 +25,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load keymaps
 require("keymaps")
 -- Load plugins
 require("lazy").setup("plugins")
