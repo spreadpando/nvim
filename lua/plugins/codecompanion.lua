@@ -39,7 +39,7 @@ return {
             adapter = "openai",
           },
           inline = {
-            adapter = "openai",
+            adapter = "copilot",
           },
         },
         -- prompt_library = require("workflows.gen-vectorctx-eng"),
