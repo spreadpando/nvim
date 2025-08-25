@@ -5,10 +5,29 @@ return {
     branch = "master",
     lazy = false,
     build = ":TSUpdate",
+    opts = {
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      indent = { enable = true, disable = { "python" } },
+      ensure_installed = {
+        "c",
+        "cpp",
+        "go",
+        "lua",
+        "python",
+        "rust",
+        "typescript",
+        "help",
+        "vim",
+        "markdown",
+        "markdown_inline",
+      },
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "BurntSushi/ripgrep",
@@ -26,13 +45,13 @@ return {
     },
     keys = {
       {
-        "<leader><leader>E",
+        "<leader><leader>e",
         "<cmd>NvimTreeToggle<cr>",
         desc = "Toggle File Explorer",
         mode = { "n", "v", "i" },
       },
       {
-        "<leader><leader>e",
+        "<leader>e",
         "<cmd>NvimTreeFocus<cr>",
         desc = "Focus File Explorer",
       },

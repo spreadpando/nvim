@@ -4,7 +4,7 @@ return { -- Blink completion configuration
     dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { preset = "super-tab" },
+      keymap = { preset = "enter" },
       appearance = {
         -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
         -- Adjusts spacing to ensure icons are aligned
@@ -17,7 +17,7 @@ return { -- Blink completion configuration
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
       },
-      fuzzy = { implementation = "prefer_rust_with_warning" },
+      fuzzy = { implementation = "prefer_rust_with_warning", prebuilt_binaries = { force_version = "v1.6.0" } },
     },
     opts_extend = { "sources.default" },
   },

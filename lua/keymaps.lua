@@ -1,7 +1,7 @@
 -- Set leader key
 vim.g.mapleader = " "
 -- Close Terminal mode with escape
-vim.keymap.set("t", "<Leader><ESC>", "<C-\\><C-n>", { noremap = true })
+vim.keymap.set("t", "<leader><ESC>", "<C-\\><C-n>", { noremap = true })
 -- Go to next buffer
 vim.keymap.set("n", "<leader><leader>n", ":bnext<CR>", { noremap = true, silent = true })
 -- Go to previous buffer (optional)
