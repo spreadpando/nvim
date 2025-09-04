@@ -11,7 +11,9 @@ return {
       { "nvim-telescope/telescope.nvim" },
       { "Davidyz/VectorCode" },
       { "j-hui/fidget.nvim" },
+      { "ravitemer/mcphub.nvim" },
     },
+    after = "mcphub.nvim",                        -- ensures setup runs after MCPHub
     keys = {
       {
         "<C-a>",
@@ -35,7 +37,30 @@ return {
     opts = {
       strategies = {
         chat = {
-          adapter = "openai",
+          adapter = {
+            name = "openai",
+            model = "gpt-5-mini",
+          },
+          tools = {
+            opts = {
+              auto_submit_errors = true, -- Send any errors to the LLM automatically?
+              auto_submit_success = true, -- Send any successful output to the LLM automatically?
+              default_tools = {
+                -- TODO Add default tools for chat
+                "mcp",
+                "mcp__filesystem",
+                "mcp__neovim",
+                "mcp__mcp_hub",
+                "mcp__sequentialthinking",
+                "mcp__memory",
+                "vectorcode_toolbox",
+                "next_edit_suggestions",
+                "insert_edit_into_file",
+                "grep_search",
+                "create_file",
+              }
+            },
+          }
         },
         inline = {
           adapter = "copilot",
@@ -175,10 +200,27 @@ return {
             },
           },
         },
+        mcphub = {
+          callback = "mcphub.extensions.codecompanion",
+          opts = {
+            -- MCP Tools 
+            make_tools = true,              -- Make individual tools (@server__tool) and server groups (@server) from MCP servers
+            show_server_tools_in_chat = true, -- Show individual tools in chat completion (when make_tools=true)
+            add_mcp_prefix_to_tool_names = true, -- Add mcp__ prefix (e.g `@mcp__github`, `@mcp__neovim__list_issues`)
+            show_result_in_chat = true,      -- Show tool results directly in chat buffer
+            format_tool = nil,               -- function(tool_name:string, tool: CodeCompanion.Agent.Tool) : string Function to format tool names to show in the chat buffer
+            -- MCP Resources
+            make_vars = true,                -- Convert MCP resources to #variables for prompts
+            -- MCP Prompts 
+            make_slash_commands = true,      -- Add MCP prompts as /slash commands
+          }
+        },
       },
     },
 
     init = function()
+      vim.g.codecompanion_auto_tool_mode = true
+
       require("plugins.codecompanion.fidget-spinner"):init()
     end,
   },

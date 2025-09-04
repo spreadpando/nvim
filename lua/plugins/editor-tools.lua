@@ -32,7 +32,7 @@ return {
       -- -- https://github.com/echasovski/mini.nvim/blob/main/readmes/mini-diff.md
       require("mini.diff").setup({
         -- Enhanced diff highlighting for CodeCompanion
-        -- source = require("mini.diff").gen_source.none(),
+        source = require("mini.diff").gen_source.none(),
         -- Customize diff appearance
         view = {
           style = "sign",
