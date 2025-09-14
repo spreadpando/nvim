@@ -79,30 +79,6 @@ return {
             sticky = true,
           },
         },
-        diff = {
-          enabled = true,
-          provider = { name = "mini.diff" }, -- use mini.diff
-          close_chat_at = 240,
-          diff_signs = {
-            signs = {
-              text = "▌",
-              reject = "✗",
-              highlight_groups = {
-                addition = "DiagnosticOk",
-                deletion = "DiagnosticError",
-                modification = "DiagnosticWarn",
-              },
-            },
-            icons = {
-              accepted = " ",
-              rejected = " ",
-            },
-            colors = {
-              accepted = "DiagnosticOk",
-              rejected = "DiagnosticError",
-            },
-          },
-        },
       },
       extensions = {
         history = {
