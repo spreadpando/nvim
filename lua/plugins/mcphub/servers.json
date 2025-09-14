@@ -1,34 +1,51 @@
 {
   "mcpServers": {
     "context7": {
-      "args": ["-y", "@upstash/context7-mcp"],
-      "autoApprove": ["resolve-library-id", "get-library-docs"],
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "autoApprove": [
+        "resolve-library-id",
+        "get-library-docs"
+      ],
       "command": "npx",
-      "env": {
-        "DEFAULT_MINIMUM_TOKENS": "${DEFAULT_MINIMUM_TOKENS}"
-      }
+      "disabled": false
     },
     "fetch": {
-      "args": ["mcp-server-fetch"],
+      "args": [
+        "mcp-server-fetch"
+      ],
       "command": "uvx"
     },
+    "git": {
+      "args": [
+        "mcp-server-git"
+      ],
+      "command": "uvx",
+      "disabled": false
+    },
     "memory": {
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
       "command": "npx"
     },
     "sequentialthinking": {
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
       "command": "npx"
     },
     "vectorcode": {
+      "autoApprove": [
+        "ls",
+        "query"
+      ],
       "command": "vectorcode-mcp-server",
-      "autoApprove": ["ls", "query"],
       "disabled": false
-    },
-    "git": {
-      "command": "uvx",
-      "disabled": false,
-      "args": ["mcp-server-git"]
     }
   }
 }

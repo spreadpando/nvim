@@ -81,7 +81,7 @@ return {
         },
         diff = {
           enabled = true,
-          provider = require("codecompanion.providers").diff.mini_diff, -- use mini.diff
+          provider = { name = "mini.diff" }, -- use mini.diff
           close_chat_at = 240,
           diff_signs = {
             signs = {
