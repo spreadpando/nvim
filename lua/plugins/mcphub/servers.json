@@ -1,0 +1,34 @@
+{
+  "mcpServers": {
+    "context7": {
+      "args": ["-y", "@upstash/context7-mcp"],
+      "autoApprove": ["resolve-library-id", "get-library-docs"],
+      "command": "npx",
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": "${DEFAULT_MINIMUM_TOKENS}"
+      }
+    },
+    "fetch": {
+      "args": ["mcp-server-fetch"],
+      "command": "uvx"
+    },
+    "memory": {
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "command": "npx"
+    },
+    "sequentialthinking": {
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "command": "npx"
+    },
+    "vectorcode": {
+      "command": "vectorcode-mcp-server",
+      "autoApprove": ["ls", "query"],
+      "disabled": false
+    },
+    "git": {
+      "command": "uvx",
+      "disabled": false,
+      "args": ["mcp-server-git"]
+    }
+  }
+}

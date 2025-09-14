@@ -30,14 +30,28 @@ return {
       require("mini.icons").setup()
       -- diff
       -- -- https://github.com/echasovski/mini.nvim/blob/main/readmes/mini-diff.md
+
       require("mini.diff").setup({
-        -- Enhanced diff highlighting for CodeCompanion
-        source = require("mini.diff").gen_source.none(),
-        -- Customize diff appearance
+        -- Use Git for the diff source
+        source = require("mini.diff").gen_source.git(),
+
+        -- How to display the diff
         view = {
-          style = "sign",
+          style = "sign", -- show + / - in the sign column
+          folds = true, -- optionally fold unchanged regions
+        },
+
+        -- Keymaps for diff navigation and preview
+        mappings = {
+          -- Jump to next/prev diff hunk
+          goto_next = "]c",
+          goto_prev = "[c",
+
+          -- Show diff preview of the buffer
+          show = "<leader>gd",
         },
       })
+
       -- git
       -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-git.md
       require("mini.git").setup()
@@ -58,7 +72,17 @@ return {
       require("mini.pairs").setup()
       -- surround
       -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-surround.md
-      require("mini.surround").setup()
+      require("mini.surround").setup({
+        mappings = {
+          add = "gza", -- Add surrounding
+          delete = "gzd", -- Delete surrounding
+          find = "gzf", -- Find right surrounding
+          find_left = "gzF", -- Find left surrounding
+          highlight = "gzh", -- Highlight surrounding
+          replace = "gzr", -- Replace surrounding
+          update_n_lines = "gzn", -- Update n_lines
+        },
+      })
       -- use square brackets to move between sections
       -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-bracketed.md
       require("mini.bracketed").setup()
