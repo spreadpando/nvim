@@ -66,4 +66,41 @@ return {
       })
     end,
   },
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    keys = {
+      {
+        "zC",
+        function()
+          require("ufo").closeAllFolds()
+        end,
+        desc = "Close all folds (ufo)",
+      },
+      {
+        "zO",
+        function()
+          require("ufo").openAllFolds()
+        end,
+        desc = "Open all folds (ufo)",
+      },
+    },
+    config = function()
+      local ok, ufo = pcall(require, "ufo")
+      if not ok then
+        return
+      end
+      ufo.setup({
+        provider_selector = function(bufnr, filetype, buftype)
+          return { "lsp", "indent" }
+        end,
+      })
+
+      -- Use expression folding driven by ufo
+      vim.o.foldmethod = "expr"
+      vim.o.foldexpr = "v:lua.require('ufo').foldexpr()"
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
+    end,
+  },
 }
