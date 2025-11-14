@@ -98,6 +98,8 @@ hi typescriptClassHeritage guifg=#c89292 guibg=NONE gui=NONE
 hi typescriptClassBlock guifg=#ffbdb1 guibg=NONE gui=NONE
 hi typescriptBlock guifg=#ffbdb1 guibg=NONE gui=NONE
 
+
+
 " hi typescriptIdentifierName guifg=#fddbdc guibg=NONE gui=NONE
 "########################################
 "# Light Theme Overrides                #

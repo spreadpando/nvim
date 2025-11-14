@@ -46,22 +46,18 @@ return {
       },
     },
     config = function()
-      require("nvim-tree").setup({})
-    end,
-  },
-  {
-    "akinsho/bufferline.nvim",
-    version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("bufferline").setup({
-        options = {
-          diagnostics = "nvim_lsp",
-          separator_style = "slope",
-          diagnostics_indicator = function(count, level)
-            local icon = level:match("error") and " " or " "
-            return " " .. icon .. count
-          end,
+      require("nvim-tree").setup({
+        view = {
+          side = "left", -- left side
+          width = 30, -- fixed width
+          height = 30,
+          preserve_window_proportions = true,
+          number = false,
+          relativenumber = false,
+          git = {
+            enable = true,
+            ignore = true,
+          },
         },
       })
     end,
@@ -92,15 +88,23 @@ return {
       end
       ufo.setup({
         provider_selector = function(bufnr, filetype, buftype)
-          return { "lsp", "indent" }
+          return { "treesitter", "indent" }
         end,
       })
-
-      -- Use expression folding driven by ufo
-      vim.o.foldmethod = "expr"
-      vim.o.foldexpr = "v:lua.require('ufo').foldexpr()"
-      vim.o.foldlevel = 99
-      vim.o.foldlevelstart = 99
+    end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      local bufferline = require("bufferline")
+      bufferline.setup({
+        options = {
+          mode = "buffers",
+          style_preset = bufferline.style_preset.no_italic, -- or bufferline.style_preset.minimal,
+        },
+      })
     end,
   },
 }

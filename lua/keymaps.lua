@@ -6,9 +6,16 @@ vim.keymap.set("t", "<leader><ESC>", "<C-\\><C-n>", { noremap = true })
 vim.keymap.set("n", "<leader><leader>n", ":bnext<CR>", { noremap = true, silent = true })
 -- Go to previous buffer (optional)
 vim.keymap.set("n", "<leader><leader>p", ":bprevious<CR>", { noremap = true, silent = true })
+-- Delete Buffer
+vim.keymap.set("n", "<leader><leader>d", ":bdelete<CR>", { noremap = true, silent = true })
+
+-- -- Always open terminal in bottom split
+-- vim.keymap.set('n', '<leader><leader>t', function()
+--   vim.cmd('botright split | terminal')
+-- end, { desc = 'Open terminal in bottom split' })
 
 -- Global diagnostics (float under cursor)
-vim.keymap.set("n", "<leader><leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
 
 -- Buffer-local LSP keymaps
 vim.api.nvim_create_autocmd("LspAttach", {

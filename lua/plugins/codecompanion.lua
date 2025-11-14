@@ -41,25 +41,6 @@ return {
   --           name = "openai",
   --           model = "gpt-5-mini",
   --         },
-  --         tools = {
-  --           opts = {
-  --             auto_submit_errors = true, -- Send any errors to the LLM automatically?
-  --             auto_submit_success = true, -- Send any successful output to the LLM automatically?
-  --             default_tools = {
-  --               -- TODO Add default tools for chat
-  --               "mcp__filesystem",
-  --               "mcp__neovim",
-  --               "mcp__mcp_hub",
-  --               "mcp__sequentialthinking",
-  --               "mcp__memory",
-  --               "mcp__context7",
-  --               "vectorcode_toolbox",
-  --               "next_edit_suggestions",
-  --               "insert_edit_into_file",
-  --               "grep_search",
-  --             },
-  --           },
-  --         },
   --       },
   --       inline = {
   --         adapter = "copilot",
@@ -70,7 +51,6 @@ return {
   --         },
   --       },
   --     },
-  --
   --     display = {
   --       chat = {
   --         window = {
@@ -151,7 +131,7 @@ return {
   --             -- Automatically index summaries when they are generated
   --             auto_create_memories_on_summary_generation = true,
   --             -- Path to the VectorCode executable
-  --             vectorcode_exe = "/home/aphyd/.local/share/uv/tools/vectorcode/bin/vectorcode",
+  --             vectorcode_exe = "~/.local/share/uv/tools/vectorcode/bin/vectorcode",
   --             -- Tool configuration
   --             tool_opts = {
   --               -- Default number of memories to retrieve
@@ -168,7 +148,7 @@ return {
   --       vectorcode = {
   --         enabled = true,
   --         opts = {
-  --           cli_path = "/home/aphyd/.local/share/uv/tools/vectorcode/bin/vectorcode",
+  --           cli_path = "~/.local/share/uv/tools/vectorcode/bin/vectorcode",
   --           tool_group = {
   --             enabled = true,
   --             extras = {},
