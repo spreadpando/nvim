@@ -269,5 +269,6 @@ vim.keymap.set("n", "<leader><leader>c", M.launch_claude, { desc = "Launch Claud
 vim.keymap.set("n", "<leader><leader>n", next_buffer, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader><leader>p", prev_buffer, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader><leader>d", ":bdelete<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader><leader>D", ":bdelete!<CR>", { noremap = true, silent = true })
 
 return M
