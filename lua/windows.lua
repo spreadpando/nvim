@@ -11,11 +11,24 @@ local bottom_height = 15
 -- ============================================================================
 -- UTILITIES
 -- ============================================================================
+
 local function ensure_main_win()
-  if not main_win or not vim.api.nvim_win_is_valid(main_win) then
-    main_win = vim.api.nvim_get_current_win()
+  -- If main_win is invalid OR was incorrectly set to an NvimTree window,
+  -- pick the first NON-NvimTree window instead.
+  if not main_win or
+     not vim.api.nvim_win_is_valid(main_win) or
+     vim.bo[vim.api.nvim_win_get_buf(main_win)].filetype == "NvimTree"
+  then
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+      local buf = vim.api.nvim_win_get_buf(win)
+      if vim.bo[buf].filetype ~= "NvimTree" then
+        main_win = win
+        return
+      end
+    end
   end
 end
+
 
 local function get_loaded_buffers()
   local bufs = {}
