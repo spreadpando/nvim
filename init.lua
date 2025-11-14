@@ -34,6 +34,5 @@ vim.opt.rtp:prepend(lazypath)
 -- Load native vim keymaps and overrides.
 -- (plugin specific keymaps are in each plugin's keys array)
 require("keymaps")
-require("windows")
 -- Load plugins
 require("lazy").setup("plugins")

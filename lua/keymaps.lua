@@ -1,18 +1,11 @@
 -- Set leader key
 vim.g.mapleader = " "
+
+-- Import windows module
+local windows = require("windows")
+
 -- Close Terminal mode with escape
 vim.keymap.set("t", "<leader><ESC>", "<C-\\><C-n>", { noremap = true })
--- Go to next buffer
-vim.keymap.set("n", "<leader><leader>n", ":bnext<CR>", { noremap = true, silent = true })
--- Go to previous buffer (optional)
-vim.keymap.set("n", "<leader><leader>p", ":bprevious<CR>", { noremap = true, silent = true })
--- Delete Buffer
-vim.keymap.set("n", "<leader><leader>d", ":bdelete<CR>", { noremap = true, silent = true })
-
--- -- Always open terminal in bottom split
--- vim.keymap.set('n', '<leader><leader>t', function()
---   vim.cmd('botright split | terminal')
--- end, { desc = 'Open terminal in bottom split' })
 
 -- Global diagnostics (float under cursor)
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
@@ -42,3 +35,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     bufmap("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
   end,
 })
+
+-- ============================================================================
+-- WINDOW MANAGEMENT KEYMAPS
+-- ============================================================================
+vim.keymap.set("n", "<leader><leader>z", windows.toggle_bottom_panel, { desc = "Toggle bottom terminal panel" })
+vim.keymap.set("n", "<leader><leader>b", windows.toggle_main_bottom, { desc = "Toggle focus between main and bottom panel" })
+vim.keymap.set("n", "<leader><leader>t", windows.launch_terminal, { desc = "Launch terminal in pinned bottom panel" })
+vim.keymap.set("n", "<leader><leader>c", windows.launch_claude, { desc = "Launch Claude in bottom panel" })
+vim.keymap.set("n", "<leader><leader>n", windows.next_buffer, { noremap = true, silent = true, desc = "Next buffer" })
+vim.keymap.set("n", "<leader><leader>p", windows.prev_buffer, { noremap = true, silent = true, desc = "Previous buffer" })
+vim.keymap.set("n", "<leader><leader>d", ":bdelete<CR>", { noremap = true, silent = true, desc = "Delete buffer" })
+vim.keymap.set("n", "<leader><leader>D", ":bdelete!<CR>", { noremap = true, silent = true, desc = "Force delete buffer" })

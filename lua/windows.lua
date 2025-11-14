@@ -82,7 +82,7 @@ end
 -- ============================================================================
 -- BUFFER NAVIGATION
 -- ============================================================================
-local function next_buffer()
+function M.next_buffer()
   local cur_win = vim.api.nvim_get_current_win()
   local cur_buf = vim.api.nvim_get_current_buf()
 
@@ -133,7 +133,7 @@ local function next_buffer()
   end
 end
 
-local function prev_buffer()
+function M.prev_buffer()
   local cur_win = vim.api.nvim_get_current_win()
   local cur_buf = vim.api.nvim_get_current_buf()
 
@@ -181,7 +181,7 @@ local function prev_buffer()
 end
 
 -- Toggle focus between main window and bottom terminal panel
-local function toggle_main_bottom()
+function M.toggle_main_bottom()
   if not main_win or not vim.api.nvim_win_is_valid(main_win) then
     return
   end
@@ -258,17 +258,5 @@ function M.toggle_bottom_panel()
     open_bottom_panel()
   end
 end
-
--- ============================================================================
--- KEYMAPS
--- ============================================================================
-vim.keymap.set("n", "<leader><leader>z", M.toggle_bottom_panel, { desc = "Toggle bottom terminal panel" })
-vim.keymap.set("n", "<leader><leader>b", toggle_main_bottom, { desc = "Toggle focus between main and bottom panel" })
-vim.keymap.set("n", "<leader><leader>t", M.launch_terminal, { desc = "Launch terminal in pinned bottom panel" })
-vim.keymap.set("n", "<leader><leader>c", M.launch_claude, { desc = "Launch Claude in bottom panel" })
-vim.keymap.set("n", "<leader><leader>n", next_buffer, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader><leader>p", prev_buffer, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader><leader>d", ":bdelete<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader><leader>D", ":bdelete!<CR>", { noremap = true, silent = true })
 
 return M
